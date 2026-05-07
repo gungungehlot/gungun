@@ -1,0 +1,403 @@
+/* =========================
+   RESPONSIVE CSS
+========================= */
+
+/* Laptop */
+@media (max-width: 1200px) {
+
+    .dashboardcard {
+        flex-wrap: wrap;
+    }
+
+    .dashboardcards {
+        width: 48%;
+    }
+
+    .sidebarouter {
+        width: 25%;
+    }
+
+    .userdetail {
+        flex-basis: 75%;
+    }
+
+    table {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+
+/* Tablet */
+@media (max-width: 992px) {
+
+    .login {
+        padding: 40px 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .loginbackgorund {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .sidebarouter {
+        width: 30%;
+    }
+
+    .userdetail {
+        flex-basis: 70%;
+        padding-left: 10px;
+    }
+
+    .dashboardcard {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .dashboardcards {
+        width: 100%;
+    }
+
+    .filterforminner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .faqinner input,
+    select {
+        width: 100%;
+    }
+
+    .profile-card,
+    .forgotprofile-card,
+    .activityBox {
+        width: 100%;
+    }
+
+    .mainprofile {
+        flex-direction: column;
+    }
+
+    .nav-right {
+        gap: 12px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        font-size: 15px;
+    }
+
+    .dashboardouter {
+        padding-top: 80px;
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .admin {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .adminheading {
+        font-size: 20px;
+        padding: 5px 0;
+    }
+
+    .adminuser {
+        font-size: 15px;
+    }
+
+    .usermain {
+        flex-direction: column;
+    }
+
+    .sidebarouter {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        border-right: none;
+    }
+
+    .sidebarinner {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+    }
+
+    .lists {
+        padding: 5px;
+    }
+
+    .lists button {
+        min-width: 180px;
+    }
+
+    .userdetail {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .dashboardcard {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .dashboardcards {
+        width: 100%;
+    }
+
+    .cardsui {
+        height: auto;
+    }
+
+    .filterinner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter {
+        width: 100%;
+    }
+
+    .filter input {
+        width: 100%;
+    }
+
+    .applybtn {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .filterclear {
+        width: 100%;
+    }
+
+    .profile-navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .nav-right {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .profile-card,
+    .forgotprofile-card,
+    .activityBox {
+        width: 100%;
+        margin: 10px 0;
+        padding: 20px;
+    }
+
+    .faqouter {
+        width: 100%;
+    }
+
+    .faqinner input,
+    select {
+        width: 100%;
+    }
+
+    .faqinner button {
+        width: 100%;
+    }
+
+    .usernav ul {
+        flex-wrap: wrap;
+        font-size: 15px;
+    }
+
+    .dashboardouter {
+        padding-top: 110px;
+    }
+
+    .option {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .options {
+        width: 100%;
+    }
+
+    .gender-box {
+        width: 100%;
+    }
+
+    .radio-group {
+        flex-wrap: wrap;
+    }
+
+    .innercard {
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .dashbutton {
+        width: 100%;
+    }
+
+    .cardtext {
+        font-size: 20px;
+    }
+
+    .cardspantext {
+        font-size: 15px;
+    }
+
+    .faqinner h5 {
+        font-size: 18px;
+    }
+
+    .faqlabel label {
+        font-size: 16px;
+    }
+
+    th,
+    td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    .login {
+        padding: 20px 10px;
+    }
+
+    .loginbackgorund {
+        padding: 15px;
+    }
+
+    .loginheading h1 {
+        font-size: 28px;
+    }
+
+    .login-form {
+        padding: 15px;
+    }
+
+    .input input {
+        font-size: 14px;
+        padding: 10px 40px 10px 15px;
+    }
+
+    .remember {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .loginbtn {
+        font-size: 14px;
+    }
+
+    .adminheading {
+        font-size: 18px;
+    }
+
+    .dashboardcards {
+        padding: 15px;
+    }
+
+    .cardsui {
+        padding: 15px;
+    }
+
+    .cardicon {
+        font-size: 18px;
+    }
+
+    .cardtext {
+        font-size: 18px;
+    }
+
+    .cardspantext {
+        font-size: 14px;
+    }
+
+    .filterform p,
+    .filterlabel label {
+        font-size: 16px;
+    }
+
+    .profile-card,
+    .forgotprofile-card,
+    .activityBox {
+        padding: 15px;
+    }
+
+    .nav-left img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .nav-right a {
+        font-size: 12px;
+    }
+
+    .userdetail h3 {
+        font-size: 18px;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .userdetail p {
+        text-align: center;
+    }
+
+    .dashboardouter {
+        padding-top: 120px;
+    }
+
+    .adminprofile {
+        font-size: 120px;
+    }
+
+    .outterimage {
+        width: 150px;
+        height: 150px;
+    }
+
+    .innerprofilecard {
+        width: 150px;
+        height: 150px;
+    }
+
+    .activity-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .selectbox {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logout {
+        font-size: 12px;
+    }
+}
