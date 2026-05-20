@@ -127,7 +127,7 @@ export default function Admin() {
                     setadmin(result.data._data)
                     setTotalpage(result.data._paginate.totalpages)
                     Setimage(result.data.image)
-                    console.log(result.data.image)
+                    console.log(result.data._data)
                 } else {
                     setadmin([])
                 }

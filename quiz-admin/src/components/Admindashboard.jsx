@@ -21,12 +21,14 @@ export default function Admindashboard() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log('Admindashboard rendering')
   // topic api
   useEffect(()=>{
     axios.post(`http://localhost:5000/api/admin/topic/view`)
     .then((result)=>{
       if(result.data._status == true){
         SetCategory(result.data._data)
+        console.log(result.data._data)
       }else{
         SetCategory([])
       }
@@ -42,6 +44,7 @@ export default function Admindashboard() {
      .then((result) => {
       if(result.data._status == true){
         setProfile(result.data._data)
+        console.log(result.data._data)
       }
       })
       .catch((err) => {
@@ -52,14 +55,10 @@ export default function Admindashboard() {
   useEffect(()=>{
    axios.post(`http://localhost:5000/api/admin/user/view`) 
    .then((result)=>{
-      if(result.data._status == true){
-        setadmin(result.data._data)
-        console.log(result.data._data)
-      }else{
-        setadmin([])
-      }
+    console.log(result.data._data)
+      setadmin(result.data._data)
     })
-    .catch(()=>{
+    .catch((error)=>{
       iziToast.error({
         message : 'Something went wrong'
       })
@@ -67,9 +66,10 @@ export default function Admindashboard() {
   },[])
   return (
     <>
-    <div class='usermain'>
+    {/* {console.log('Rendering JSX')} */}
+    <div className='usermain'>
               <Sidebar/>
-    <div class='  userdetail'>
+    <div className='  userdetail'>
       <h3>  Welcome back , {profile ? profile.name : "Admin"}   <FaUser/></h3>
       <p>Here’s what’s happening with your platform today.</p>
       <div className='dashboardcard'>
@@ -96,7 +96,7 @@ export default function Admindashboard() {
               <BiSolidCategory/>
             </div>
             <div className='cardtext'>
-              {Category.length}
+              {Category?.length}
             </div>
             </div>
             <div className='cardspantext'>

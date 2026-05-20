@@ -322,7 +322,6 @@
     padding-top: 50px;
     padding-left: 15px;
 }
-
 .usermain {
     display: flex;
     background: linear-gradient(135deg, #f5f7ff, #eef1ff);
@@ -483,17 +482,21 @@ li:hover {
     padding: 20px;
     gap: 30px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .dashboardcards {
-    width: 30%;
-    background: rgba(255, 255, 255, 0.8);
+    flex: 1 1 calc(25% - 22.5px);
+    min-width: 240px;
+    background: #ffffff;
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    border: 1px solid rgba(79, 70, 229, 0.15);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     transition: 0.3s;
+    box-sizing: border-box;
 
 }
 
@@ -504,11 +507,13 @@ li:hover {
 
 .cardsui {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     background-color: white;
     height: 170px;
-    justify-content: space-between;
     border-radius: 10px;
     padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.05);
