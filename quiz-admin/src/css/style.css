@@ -129,7 +129,7 @@
 .eyeadmin {
     position: absolute;
     left: 58%;
-    top: 70.4%;
+    top: 82%;
     transform: translateY(-50%);
     font-size: 20px;
     transition: .5s;
@@ -230,6 +230,7 @@
     align-items: center;
     color: white;
     position: fixed;
+    
     background: linear-gradient(90deg, #6A5ACD, #4f46e5);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
@@ -265,12 +266,17 @@
 }
 
 .dashbutton {
-    text-align: left;
-    gap: 5px;
-    letter-spacing: 1px;
+    width: 100%;
     display: flex;
-    width: 250px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .userdetail h3 {
@@ -281,7 +287,7 @@
 }
 
 .Dashboardheading {
-    padding: 5px;
+    padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -322,6 +328,7 @@
     padding-top: 50px;
     padding-left: 15px;
 }
+
 .usermain {
     display: flex;
     background: linear-gradient(135deg, #f5f7ff, #eef1ff);
@@ -480,7 +487,7 @@ li:hover {
 .dashboardcard {
     width: 100%;
     padding: 20px;
-    gap: 30px;
+    gap: 10px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -657,10 +664,11 @@ li:hover {
 .dashicon {
     background: rgba(106, 90, 205, 0.1);
     color: #6a5acd;
-    padding: 10px;
+    padding: 8px;
     border-radius: 10px;
-    font-size: 40px;
-
+    font-size: 30px;
+    margin-right: 10px;
+    margin-left: 5px;
 }
 
 .lists button {
@@ -1339,6 +1347,7 @@ input::placeholder {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
 .logout {
     padding-right: 5px;
     padding-left: 5px;

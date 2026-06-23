@@ -190,9 +190,6 @@ exports.view = async (request, response) => {
         if (request.body.limit != '' && request.body.limit != undefined) {
             limit = request.body.limit
         }
-        if(request.body.topicid != '' && request.body.topicid != undefined){
-            topicid = request.body.topicid
-        }
     }
     var skip = (page - 1) * limit
 
@@ -248,6 +245,7 @@ exports.view = async (request, response) => {
             _id: 'desc'
         })
          .populate('topicid','name')
+
         .then((result) => {
             if (result.length > 0) {
                 var apidata = {
@@ -269,6 +267,7 @@ exports.view = async (request, response) => {
             }
         })
         .catch((error) => {
+            console.log("   error", error)
             var errorMessage = {};
             for (var index in error.errors) {
                 errorMessage[index] = error.errors[index].message;
@@ -286,6 +285,12 @@ exports.view = async (request, response) => {
 
 exports.update = async (request, response) => {
     const Quizdata = request.body;
+
+    if (request.file) {
+        if (request.file.filename) {
+            Quizdata.image = request.file.filename
+        }
+    }
 
     if (request.body.name != '') {
         var slug = slugify(request.body.name, {
@@ -410,7 +415,7 @@ exports.update = async (request, response) => {
         .then((result) => {
 
             const adminId = request.admin?.userInfo?._id || request.admin?._id;
-            activitymodel.update({
+            activitymodel.create({
                 adminId: adminId,
                 action: 'Update Quiz',
                 details: result.name
@@ -424,6 +429,7 @@ exports.update = async (request, response) => {
             response.send(apidata)
         })
         .catch((error) => {
+            console.log("error", error)
             var errorMessage = {}
 
             for (var index in error.errors) {

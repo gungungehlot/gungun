@@ -120,7 +120,7 @@ export default function Viewquiz() {
     axios.post(`http://localhost:5000/api/website/quiz/view`, {
       page: currentPage,
       name: filterelemnet.name,
-      limit: 10
+      limit: 4
     })
       .then((result) => {
         if (result.data._status == true) {

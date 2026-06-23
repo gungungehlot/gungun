@@ -11,7 +11,7 @@ export default function Login() {
   const [login, setLogin] = useState(false)
   const [active, setActive] = useState(true)
   const [register, setRegister] = useState(true)
-  const [errors, setErrors] = useState(true)
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate()
 
   const handleLogin = async (event) => {
@@ -37,7 +37,8 @@ export default function Login() {
             iziToast.success({
               message: result.data._message
             })
-             Cookies.set("user_token",result.data._token)
+            Cookies.set("user_token", result.data._token)
+            console.log("user_token", result.data._token)
             navigate('/')
           } else {
             iziToast.error({
@@ -75,8 +76,8 @@ export default function Login() {
             iziToast.success({
               message: result.data._message
             })
-             setActive(!active)
-          } 
+            setActive(!active)
+          }
           else {
             iziToast.error({
               message: result.data._message
@@ -102,6 +103,23 @@ export default function Login() {
       setErrors(updated);
     }
   }
+  // let ErrorHandler = (event) => {
+  //   let fieldName = event.target.name;
+
+  //   if (!Array.isArray(errors)) {
+  //     setErrors([]);
+  //     return;
+  //   }
+
+  //   if (event.target.value === "") {
+  //     if (!errors.includes(fieldName)) {
+  //       setErrors([...errors, fieldName]);
+  //     }
+  //   } else {
+  //     let updated = errors.filter((v) => v !== fieldName);
+  //     setErrors(updated);
+  //   }
+  // };
   return (
     <>
       {/* form outer bases */}
@@ -109,7 +127,7 @@ export default function Login() {
         <div className={`${active ? 'conatiner' : 'active conatiner'}`}>
           {/*  login form  */}
           <div className="form-box login " >
-            <form action='#' onSubmit={handleLogin}>
+            <form action='#' onSubmit={handleLogin} autoComplete='off'>
               <h3>Login</h3>
               <div className="input-box">
                 {/* input for username */}
@@ -134,14 +152,14 @@ export default function Login() {
                 <FaLock className='loginicons' />
               </div>
               <div className="forgot-link">
-                  <Link to={`/forgot`} >
+                <Link to={`/forgot`} >
                   Forgot Password?
-                  </Link>
+                </Link>
               </div>
               <button
                 type='submit'
                 className='btns'
-                // onClick={() => setActive(!active)}
+              // onClick={() => setActive(!active)}
               >
                 Login
               </button>
@@ -149,7 +167,7 @@ export default function Login() {
           </div>
           {/* form box register */}
           <div className="form-box regitser" >
-            <form action='#' onSubmit={handleRegister}>
+            <form action='#' onSubmit={handleRegister} autoComplete='off'>
               <h3>Register</h3>
               <div className="input-box">
                 {/* input for username */}

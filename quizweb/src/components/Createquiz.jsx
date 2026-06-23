@@ -9,25 +9,32 @@ import Cookies from 'js-cookie'
 
 export default function Createquiz() {
     const [selectimage, setselectimage] = useState('')
-    const [topic , setTopic] = useState([])
-    const [error , setErrors] = useState('')
+    const [topic, setTopic] = useState([])
+    const [error, setErrors] = useState('')
 
     const navigate = useNavigate();
 
     // topic view api
-    useEffect(()=>{
+    useEffect(() => {
         axios.post(`http://localhost:5000/api/admin/topic/view`)
-    .then((result)=>{
-        if(result.data._status == true){
-            setTopic(result.data._data)
-        }
-    })
-    .catch(()=>{
-        iziToast.error({
-            message : 'Something went wrong'
-        })
-    })
-    },[])
+            .then((result) => {
+                if (result.data._status == true) {
+                    setTopic(result.data._data)
+                }
+            })
+            .catch(() => {
+                iziToast.error({
+                    message: 'Something went wrong'
+                })
+            })
+    }, [])
+    var cookies = Cookies.get('user_token')
+    if (cookies == '' || cookies == undefined) {
+        iziToast.info({
+            message: 'Ready to test your knowledge? Please log in first to start your quiz journey!.'
+        });
+        navigate('/login')
+    }
     const formhandler = (event) => {
         event.preventDefault();
         var data = event.target;
@@ -45,28 +52,40 @@ export default function Createquiz() {
         setErrors(arrayerror)
         console.log(arrayerror)
         if (arrayerror.length == 0) {
-                axios.post(`http://localhost:5000/api/website/quiz/create`, event.target,{ headers: { Authorization: `Bearer ${Cookies.get('admin_token')}` } })
-                    .then((result) => {
-                        if (result.data._status == true) {
-                            event.target.reset();
-                            iziToast.success({
-                                message: result.data._message
-                            })
-                            navigate('/')
-                        } else {
-                            iziToast.error({
-                                message: result.data._message
-                            })
-                        }
-                    })
-                    .catch(() => {
-                        iziToast.error({
-                            message: 'Something went wrong'
+            const token = Cookies.get('user_token');
+            if (!token) {
+                iziToast.error({
+                    message: 'Please login first'
+                });
+                navigate('/login');
+                return;
+            }
+            console.log("Token:", token);
+            const formData = new FormData(event.target);
+            axios.post(`http://localhost:5000/api/website/quiz/create`, event.target, { headers: { Authorization: `Bearer ${Cookies.get('user_token')}` } })
+                .then((result) => {
+                    if (result.data._status == true) {
+                        console.log(Cookies.get("user_token"));
+                        event.target.reset();
+                        setselectimage('');
+                        iziToast.success({
+                            message: result.data._message
                         })
+                        navigate('/')
+                    } else {
+                        iziToast.error({
+                            message: result.data._message
+                        })
+                    }
+                })
+                .catch(() => {
+                    iziToast.error({
+                        message: 'Something went wrong'
                     })
-            } 
+                })
         }
-    
+
+    }
     const handleimagechange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -80,10 +99,10 @@ export default function Createquiz() {
     return (
         <>
             <div class='usermain'>
-                <Header/>
+                <Header />
                 <div class='  userdetail'>
                     <hr />
-                    <form onSubmit={formhandler}>
+                    <form onSubmit={formhandler} autoComplete='off'>
                         <div className='faqinner'>
 
                             <h5>Create Quiz </h5>
@@ -96,7 +115,7 @@ export default function Createquiz() {
                                     {!selectimage && (
                                         <div className='outterimage'>
                                             <div className='innerimage'>
-                                                <p className='innerimageheading'><span><FaPlus className='plus'/></span> or drag and drop</p>
+                                                <p className='innerimageheading'><span><FaPlus className='plus' /></span> or drag and drop</p>
                                             </div>
                                         </div>
                                     )}
@@ -131,7 +150,7 @@ export default function Createquiz() {
                                     placeholder='Enter Name '
                                     required
                                 />
-                                
+
                             </div>
                             {/* quiz select */}
                             <div className='faqlabel'>
@@ -144,7 +163,7 @@ export default function Createquiz() {
                                 {
                                     topic.map((value, index) => {
                                         return (
-                                            <option  value={value._id} key={index} >{value.name}</option>
+                                            <option value={value._id} key={index} >{value.name}</option>
                                         )
                                     })
                                 }
@@ -616,6 +635,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option7b'
+                                        placeholder='option2'
                                         required
                                     />
                                 </div>
@@ -623,6 +643,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option7c'
+                                        placeholder='option3'
                                         required
                                     />
 
@@ -631,6 +652,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option7d'
+                                        placeholder='option4'
                                         required
                                     />
 
@@ -673,6 +695,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option8a'
+                                        placeholder='option1'
                                         required
                                     />
 
@@ -681,6 +704,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option8b'
+                                        placeholder='option2'
                                         required
                                     />
 
@@ -689,6 +713,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option8c'
+                                        placeholder='option3'
                                         required
                                     />
 
@@ -697,6 +722,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option8d'
+                                        placeholder='option4'
                                         required
                                     />
 
@@ -739,6 +765,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option9a'
+                                        placeholder='option1'
                                         required
                                     />
 
@@ -747,6 +774,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option9b'
+                                        placeholder='option2'
                                         required
                                     />
 
@@ -755,6 +783,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option9c'
+                                        placeholder='option3'
                                         required
                                     />
 
@@ -763,6 +792,7 @@ export default function Createquiz() {
                                     <input
                                         type='text'
                                         name='option9d'
+                                        placeholder='option4'
                                         required
                                     />
 

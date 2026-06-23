@@ -38,7 +38,7 @@ export default function Reset() {
             })
             arrayerror = ([... new Set(arrayerror)])
             setErrors(arrayerror)
-            axios.put('http://localhost:5000/api/website/user/reset-password',event.target,{ headers: { Authorization: `Bearer ${params.token}` } })
+            axios.put('http://localhost:5000/api/admin/user/reset-password',event.target,{ headers: { Authorization: `Bearer ${params.token}` } })
                 .then((result) => {
                     iziToast.success({
                         message: result.data._message

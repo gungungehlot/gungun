@@ -85,6 +85,7 @@ export default function Login() {
             <input type="text"
              placeholder="Email" 
              name = 'email'
+             autoComplete="off"
              onKeyUp={ErrorHandler}
              />
               {

@@ -7,8 +7,7 @@ const bcrypt = require('bcrypt');
 const usermodel = require('../../modals/admin');
 const activitymodel = require('../../modals/activity');
 const crypto = require('crypto');
-const { trace } = require('console');
-const console = require('console');
+
 
 
 // passconvert varaible password ko 10 bar convert krega
@@ -305,9 +304,6 @@ exports.changepassword = async (request, response) => {
             response.send(apidata)
         })
 }
-
-
-
 exports.create = async (request, response) => {
     const Userdata = request.body;
     if (request.body) {
@@ -349,7 +345,7 @@ exports.create = async (request, response) => {
                 }
 
             } catch (err) {
-                console.log("ACTIVITY ERROR 👉", err.message);
+                console.log("ACTIVITY ERROR ", err.message);
             }
             var apidata = {
                 _status: true,
@@ -359,6 +355,7 @@ exports.create = async (request, response) => {
             response.send(apidata)
         })
         .catch((error) => {
+            console.log(error, 'error from createa admin api')
             var errorMessage = {}
             for (var index in error.erros) {
                 errorMessage[index] = error.erros[index].message
@@ -372,7 +369,6 @@ exports.create = async (request, response) => {
             response.send(apidata)
         })
 }
-
 exports.view = async (request, response) => {
     var page
     var limit
@@ -450,7 +446,6 @@ exports.view = async (request, response) => {
             response.send(apidata)
         })
 }
-
 exports.update = async (request, response) => {
     if (request.file) {
         console.log('hello')
@@ -502,7 +497,6 @@ exports.update = async (request, response) => {
             response.send(apidata)
         })
 }
-
 exports.details = async (request, response) => {
     usermodel.findOne({
         _id: request.params.id
@@ -570,7 +564,6 @@ exports.changestatus = async (request, response) => {
             response.send(apidata)
         })
 }
-
 exports.destroy = async (request, response) => {
     const Userdata = {}
     Userdata.Delete_at = Date.now()
@@ -604,176 +597,176 @@ exports.destroy = async (request, response) => {
         })
 }
 exports.forgotPassword = async (request, response) => {
-  if (request.body) {
-    const checkEmail = await usermodel.findOne({
-      email: request.body.email,
-      deleted_at: null,
-      role_type: "user",
-    });
+    if (request.body) {
+        const checkEmail = await usermodel.findOne({
+            email: request.body.email,
+            deleted_at: null,
+            role_type: "admin",
+        });
 
-    if (!checkEmail) {
-      const data = {
-        _status: false,
-        _message: "Email id do not exists.",
-        _is_token: 0,
-        _data: null,
-      };
-    }
+        if (!checkEmail) {
+            const data = {
+                _status: false,
+                _message: "Email id do not exists.",
+                _is_token: 0,
+                _data: null,
+            };
+        }
 
-    try {
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: "gehlotgungun1@gmail.com",
-          pass: 'pmwslzzwzampsmsc',
-        },
-      });
-      const resetToken = jwt.sign(
-        { email: checkEmail.email, userId: checkEmail._id },
-        secretkey,
-      );
+        try {
+            const transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                    user: "gehlotgungun1@gmail.com",
+                    pass: 'wkdizkvhjzqmyogr',
+                },
+            });
+            const resetToken = jwt.sign(
+                { email: checkEmail.email, userId: checkEmail._id },
+                secretkey,
+            );
 
-      const resetLink = `http://localhost:5173/Reset/${resetToken}`;
+            const resetLink = `http://localhost:5173/Reset/${resetToken}`;
 
-      const info = transporter
-        .sendMail({
-          from: '"Quizup website" <gehlotgungun1@gmail.com>',
-          to: request.body.email,
-          subject: "Password Reset Request",
-          text: `Click the link to reset your password: ${resetLink}`,
-          html: `
+            const info = transporter
+                .sendMail({
+                    from: '"Quizup website" <gehlotgungun1@gmail.com>',
+                    to: request.body.email,
+                    subject: "Password Reset Request",
+                    text: `Click the link to reset your password: ${resetLink}`,
+                    html: `
                         <h2>Password Reset Request</h2>
                         <p>You have requested to reset your password. Please click the link below to proceed:</p>
                         <a href="${resetLink}" style="background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Reset Password</a>
                         <p>This link will expire in 1 hour.</p>
                         <p>If you didn't request this, please ignore this email.</p>
                     `,
-        })
-        .then((result) => {
-          console.log(result);
-          const data = {
-            _status: true,
-            _message: "Email Sent successfully!",
-            _data: result,
-          };
-          response.send(data);
-        })
-        .catch(() => {
-          const data = {
-            _status: true,
-            _message: "Something went wrong!",
+                })
+                .then((result) => {
+                    console.log(result);
+                    const data = {
+                        _status: true,
+                        _message: "Email Sent successfully!",
+                        _data: result,
+                    };
+                    response.send(data);
+                })
+                .catch(() => {
+                    const data = {
+                        _status: true,
+                        _message: "Something went wrong!",
+                        _data: null,
+                    };
+                    response.send(data);
+                });
+        } catch (error) {
+            console.log(error)
+            const data = {
+                _status: false,
+                _message: "Something went wrong",
+                _is_token: 0,
+                _data: null,
+            };
+            response.send(data);
+        }
+    } else {
+        const data = {
+            _status: false,
+            _message: "Email is required",
+            _is_token: 0,
             _data: null,
-          };
-          response.send(data);
-        });
-    } catch (error) {
-        console.log(error)
-      const data = {
-        _status: false,
-        _message: "Something went wrong",
-        _is_token: 0,
-        _data: null,
-      };
-      response.send(data);
+        };
+        response.send(data);
     }
-  } else {
-    const data = {
-      _status: false,
-      _message: "Email is required",
-      _is_token: 0,
-      _data: null,
-    };
-    response.send(data);
-  }
 };
-
 exports.resetPassword = async (request, response) => {
-  const token = request.headers.authorization.split(" ");
-    console.log('token' ,token)
-  if (
-    !token[1] ||
-    !request.body.new_password ||
-    !request.body.confirm_password
-  ) {
-    const data = {
-      _status: false,
-      _message: "Token and password fields are required.",
-      _is_token: 0,
-      _data: null,
-    };
-    return response.send(data);
-  }
-
-  if (request.body.new_password !== request.body.confirm_password) {
-    const data = {
-      _status: false,
-      _message: "New password and Confirm password should be same.",
-      _is_token: 0,
-      _data: null,
-    };
-    return response.send(data);
-  }
-
-  try {
-    const verifyToken = jwt.verify(token[1], secretkey);
-    console.log(verifyToken)
-    const checkUser = await usermodel.findOne({
-      _id: verifyToken.userId,
-      email: verifyToken.email,
-    //   deleted_at: null,
-    //   role_type: "admin",
-    });
-    console.log("chekuser:",checkUser)
-    if (!checkUser) {
-      const data = {
-        _status: false,
-        _message: "User not found.",
-        _is_token: 0,
-        _data: null,
-      };
-      return response.send(data);
+    const token = request.headers.authorization.split(" ");
+    console.log('token reset password', token)
+    if (
+        !token[1] ||
+        !request.body.new_password ||
+        !request.body.confirm_password
+    ) {
+        const data = {
+            _status: false,
+            _message: "Token and password fields are required.",
+            _is_token: 0,
+            _data: null,
+        };
+        return response.send(data);
     }
-    const hashedPassword = await bcrypt.hash(
-      request.body.new_password,
-      passconvert,
-    );
-    console.log(passconvert);
 
-    await usermodel
-      .updateOne(
-        {
-          _id: verifyToken.userId,
-        },
-        {
-          $set: { password: hashedPassword },
-        },
-      )
-      .then((result) => {
+    if (request.body.new_password !== request.body.confirm_password) {
         const data = {
-          _status: true,
-          _message: "Password reset successfully.",
-          _is_token: 0,
-          _data: result,
+            _status: false,
+            _message: "New password and Confirm password should be same.",
+            _is_token: 0,
+            _data: null,
         };
-        response.send(data);
-      })
-      .catch(() => {
+        return response.send(data);
+    }
+
+    try {
+        const verifyToken = jwt.verify(token[1], secretkey);
+        console.log("verifyToken Reset Password", verifyToken)
+        const checkUser = await usermodel.findOne({
+            _id: verifyToken.userId,
+            email: verifyToken.email,
+            deleted_at: null,
+            role_type: "admin",
+        });
+        console.log("chekuser:", checkUser)
+
+        if (!checkUser) {
+            const data = {
+                _status: false,
+                _message: "User not found.",
+                _is_token: 0,
+                _data: null,
+            };
+            return response.send(data);
+        }
+        const hashedPassword = await bcrypt.hash(
+            request.body.new_password,
+            passconvert,
+        );
+        console.log(passconvert);
+
+        await usermodel
+            .updateOne(
+                {
+                    _id: verifyToken.userId,
+                },
+                {
+                    $set: { password: hashedPassword },
+                },
+            )
+            .then((result) => {
+                const data = {
+                    _status: true,
+                    _message: "Password reset successfully.",
+                    _is_token: 0,
+                    _data: result,
+                };
+                response.send(data);
+            })
+            .catch((error) => {
+                const data = {
+                    _status: false,
+                    _message: "Something went wrong.",
+                    _is_token: 0,
+                    _data: null,
+                };
+                response.send(data);
+            });
+    } catch (error) {
         const data = {
-          _status: false,
-          _message: "Something went wrong.",
-          _is_token: 0,
-          _data: null,
+            _status: false,
+            _message: "Invalid or expired token.",
+            _is_token: 1,
+            _data: null,
         };
-        response.send(data);
-      });
-  } catch (error) {
-    const data = {
-      _status: false,
-      _message: "Invalid or expired token.",
-      _is_token: 1,
-      _data: null,
-    };
-    return response.send(data);
-  }
+        return response.send(data);
+    }
 };
 

@@ -4,26 +4,40 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import iziToast from 'izitoast'
 import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom'
 
 export default function Myscore() {
 
   const [data, setData] = useState([])
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     axios.post(`http://localhost:5000/website/score/viewscore`, {}, { headers: { Authorization: `Bearer ${Cookies.get('user_token')}` } })
       .then((result) => {
-        setData(result.data._data)
-        iziToast.success({
-          message: 'Your scores fetched successfully'
-        })
-      })
+        if (result.data._status) {
+          setData(result.data._data);
+        } else {
+          setData([]);
 
+          if (result.data._is_token === 1) {
+            Cookies.remove('user_token');
+
+            iziToast.info({
+              message: 'Session expired. Please login again.'
+            });
+
+            navigate('/login');
+          }
+        }
+      })
       .catch(() => {
         iziToast.error({
           message: 'Something went wrong'
         })
       })
   }, [])
+
   return (
     <>
       <Header />

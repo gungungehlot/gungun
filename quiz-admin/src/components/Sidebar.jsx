@@ -67,7 +67,7 @@ export default function Sidebar() {
           className='dashbutton' 
           onClick={()=>Setuseropen(!Useropen)}
           >
-          <FaUserGear  className='dashicon'/>  Usermangement
+          <FaUserGear  className='dashicon'/>  Accounts
             {
               Useropen
               ?

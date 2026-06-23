@@ -157,7 +157,7 @@ export default function Addtestimonial() {
                         <h1>Testimonial </h1>
                     </div>
                     <hr />
-                    <form onSubmit={formhandler}>
+                    <form onSubmit={formhandler} autoComplete='off'>
                         <div className='faqinner'>
                             {
                                 update

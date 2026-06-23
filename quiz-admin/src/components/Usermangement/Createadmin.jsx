@@ -10,8 +10,8 @@ export default function Createadmin() {
   const [update, Setupdate] = useState('')
   const [selectimage, setselectimage] = useState('')
   const [admindetail, Setadmindetail] = useState('')
-  const [errors, setErrors] = useState('')
-  const [showPassword , setShowPassword] = useState(false)
+  const [errors, setErrors] = useState([])
+  const [showPassword, setShowPassword] = useState(false)
 
 
   const params = useParams();
@@ -60,7 +60,7 @@ export default function Createadmin() {
     if (arrayerror.length == 0) {
 
       if (update == '') {
-        axios.post(`http://localhost:5000/api/admin/user/create`, event.target,{headers: { Authorization: `Bearer ${Cookies.get('admin_token')}` }})
+        axios.post(`http://localhost:5000/api/admin/user/create`, event.target, { headers: { Authorization: `Bearer ${Cookies.get('admin_token')}` } })
           .then((result) => {
             if (result.data._status == true) {
               iziToast.success({
@@ -69,7 +69,7 @@ export default function Createadmin() {
               navigate('/usermangement/admin')
             } else {
               iziToast.error({
-                message: result.data._message
+                message: result.data._mesage
               })
             }
           })
@@ -151,7 +151,7 @@ export default function Createadmin() {
             <h1>Admin </h1>
           </div>
           <hr />
-          <form onSubmit={formhandler}>
+          <form onSubmit={formhandler} autoComplete='off'>
             <div className='faqinner'>
 
               <h5>
@@ -254,12 +254,15 @@ export default function Createadmin() {
               </div>
               <div className='faqinput'>
                 <input
-                  type='tel'
-                  inputMode='numeric'
+                  type="text"
+                  inputMode="numeric"
                   maxLength={10}
-                  name='mobile_number'
-                  placeholder='Enter Admin mobile_number '
+                  name="mobile_number"
+                  placeholder="Enter Admin Mobile Number"
                   defaultValue={admindetail.mobile_number}
+                  onInput={(e) => {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                  }}
                   onKeyUp={ErrorHandler}
                 />
                 {

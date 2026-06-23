@@ -1,535 +1,339 @@
 
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+}
 
+button, input, textarea, select {
+  font-family: inherit;
+}
 
+/* Home and general layout */
 @media (max-width: 1200px) {
+  .homesection {
+    width: min(100%, 700px);
+    padding: 20px;
+  }
 
-.Home {
-padding: 100px 30px;
-gap: 30px;
-}
+  .homesectionimage {
+    width: 100%;
+    padding-top: 220px;
+  }
 
-.homesectionimage {
-width: 100%;
-padding-top: 150px;
-}
+  .homesection h1 {
+    font-size: 30px;
+  }
 
-.usersay {
-flex-wrap: wrap;
-justify-content: center;
-}
+  .homesection p {
+    font-size: 24px;
+  }
 
-.footercontent {
-flex-wrap: wrap;
-gap: 20px;
-}
+  .usersay {
+    gap: 30px;
+    padding: 40px 20px;
+  }
 
-.quiz-container {
-justify-content: center;
-}
+  .testimonial-card {
+    width: min(100%, 320px);
+  }
 
-.mainprofile {
-flex-direction: column;
-align-items: center;
+  .footercontent {
+    justify-content: center;
+    gap: 20px;
+  }
 }
-}
-
 
 @media (max-width: 992px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 16px;
+  }
 
-.header {
-flex-wrap: wrap;
-padding: 10px 20px;
-}
+  .navbar {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
 
-.navbar {
-width: 100%;
-text-align: center;
-margin-top: 10px;
-}
+  .navbar a {
+    margin: 6px 8px;
+    font-size: 17px;
+    padding-left: 10px;
+  }
 
-.navbar a {
-display: inline-block;
-margin: 10px;
-font-size: 18px;
-}
+  .homesection {
+    width: 100%;
+  }
 
-.Home {
-flex-direction: column;
-height: auto;
-padding-top: 120px;
-}
+  .faqinner {
+    width: 100%;
+  }
 
-.homesection {
-width: 100%;
-text-align: center;
-}
+  .faqimage,
+  .faqcontent {
+    width: 100%;
+    padding: 0;
+  }
 
-.homesection h1 {
-font-size: 28px;
-}
+  .faqs {
+    flex-direction: column;
+    gap: 20px;
+  }
 
-.homesection p {
-font-size: 22px;
-}
+  .services {
+    grid-template-columns: 1fr;
+  }
 
-.homesectionimage {
-width: 100%;
-padding-top: 50px;
-}
+  .quesion {
+    width: 100%;
+  }
 
-.usersay {
-flex-wrap: wrap;
-gap: 20px;
+  .footercontent {
+    flex-wrap: wrap;
+  }
 }
-
-.services {
-grid-template-columns: 1fr;
-}
-
-.faqouter {
-flex-direction: column;
-}
-
-.faqimage,
-.faqcontent {
-width: 100%;
-}
-
-.footercontent {
-flex-wrap: wrap;
-justify-content: center;
-}
-
-.profile-card,
-.activityBox,
-.forgotprofile-card {
-width: 90%;
-}
-
-.quiz-card {
-width: 90%;
-height: auto;
-}
-
-.Quizcard {
-width: 45%;
-}
-}
-
 
 @media (max-width: 768px) {
+  .header {
+    justify-content: space-between;
+    padding: 18px 14px;
+  }
 
-.logo {
-font-size: 26px;
+  .logo {
+    font-size: 28px;
+  }
+
+  .homesection h1 {
+    font-size: 26px;
+  }
+
+  .homesection p {
+    font-size: 20px;
+  }
+
+  .pargraph {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .homesectionimage {
+    padding-top: 180px;
+  }
+
+  .faqheading h3,
+  .faqinner h5,
+  h2 {
+    font-size: 28px;
+  }
+
+  .quiz-container {
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .Quizcard,
+  .quiz-card,
+  .profile-card,
+  .activityBox,
+  .forgotprofile-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .quizplay {
+    width: 100%;
+  }
+
+  .quizbuttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .quizoption {
+    width: 100%;
+  }
+
+  .mainprofile {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .profile-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .nav-right {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .useroutterimage,
+  .userinnercard {
+    margin: 0 auto;
+  }
+
+  .option {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .options {
+    width: 100%;
+  }
 }
 
-.navbar a {
-font-size: 16px;
-margin: 5px;
-}
+@media (max-width: 640px) {
+  .outterform {
+    padding: 16px 12px;
+  }
 
-.login-register {
-font-size: 16px;
-padding: 5px 10px;
-}
+  .conatiner,
+  .profile-card,
+  .activityBox,
+  .forgotprofile-card,
+  .Quizcard,
+  .quiz-card {
+    border-radius: 24px;
+    padding: 22px;
+  }
 
-select {
-width: 100%;
-margin-top: 10px;
-}
+  .form-box {
+    padding: 24px 18px;
+  }
 
-.Home {
-padding: 100px 15px 40px;
-}
+  .toggle-panel {
+    padding: 20px 16px;
+  }
 
-.homesection h1 {
-font-size: 24px;
-}
+  .toggle-panel h3 {
+    font-size: 22px;
+  }
 
-.homesection p {
-font-size: 18px;
-padding: 10px;
-}
+  .toggle-panel p,
+  .faqheading h3,
+  .faqinner h5,
+  .question,
+  .activity-header h3,
+  .quizplay,
+  .updateprofile {
+    font-size: 15px;
+  }
 
-.homesection .start {
-width: 160px;
-height: 50px;
-font-size: 14px;
-}
+  .input-box input,
+  .form-group input {
+    padding: 12px 16px;
+    font-size: 15px;
+  }
 
-.testimonial-card {
-width: 100%;
-}
+  .btns,
+  .btn,
+  .updateprofile,
+  .quizbutton,
+  .quizplay {
+    width: 100%;
+    font-size: 15px;
+  }
 
-.usersay {
-padding: 15px;
-}
+  .faqimage img,
+  .homesectionimage img,
+  .innerimage img,
+  .userinnerimage,
+  .profileimageselect {
+    width: 100%;
+    height: auto;
+  }
 
-.footercontent {
-flex-direction: column;
-align-items: center;
-}
+  .faqouter,
+  .footercontent,
+  .services,
+  .scoremain {
+    padding: 16px 12px;
+  }
 
-.footerelement {
-width: 100%;
-}
+  .faqcontent {
+    padding: 16px;
+  }
 
-.faqinner input {
-width: 100%;
+  .footercontent {
+    justify-content: center;
+    text-align: center;
+  }
 }
-
-.option {
-flex-direction: column;
-width: 100%;
-gap: 10px;
-}
-
-.options {
-width: 100%;
-}
-
-.radio-group {
-flex-direction: column;
-align-items: flex-start;
-}
-
-.profile-navbar {
-flex-direction: column;
-gap: 15px;
-}
-
-.nav-right {
-flex-wrap: wrap;
-justify-content: center;
-gap: 15px;
-}
-
-.Quizcard {
-width: 100%;
-}
-
-.quiz-container {
-padding: 20px;
-}
-
-.quiz-card {
-padding: 20px;
-}
-
-.question {
-font-size: 18px;
-}
-
-.quizbuttons {
-flex-direction: column;
-gap: 10px;
-}
-
-.quizbutton,
-.next,
-.prev {
-width: 100%;
-}
-
-.activity-card {
-width: 95%;
-padding: 15px;
-}
-
-.activity-row {
-font-size: 13px;
-}
-
-.activity-date {
-font-size: 11px;
-}
-}
-
 
 @media (max-width: 480px) {
+  .header {
+    padding: 14px 10px;
+  }
 
-.header {
-padding: 10px;
+  .logo {
+    font-size: 24px;
+  }
+
+  .navbar a {
+    font-size: 14px;
+    margin: 4px 6px;
+  }
+
+  .homesection {
+    padding: 14px 10px;
+  }
+
+  .homesection h1 {
+    font-size: 22px;
+  }
+
+  .homesection p {
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  .usersay,
+  .quiz-container,
+  .scoremain,
+  .footercontent {
+    padding: 12px 10px;
+  }
+
+  .btn,
+  .btns,
+  .updateprofile,
+  .quizplay,
+  .quizbutton {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  .quizbuttons {
+    gap: 10px;
+  }
+
+  .faqheading h3,
+  .faqinner h5,
+  .question,
+  .activity-header h3,
+  .userinnerimageheading {
+    font-size: 18px;
+  }
+
+  .userinnerimage {
+    width: 120px;
+    height: 120px;
+  }
+
+  .activity-card {
+    width: 100%;
+  }
+
+  .footerdiv,
+  .footer-bottom,
+  .footerlinks {
+    text-align: center;
+  }
 }
-
-.logo {
-font-size: 22px;
-}
-
-.navbar a {
-font-size: 14px;
-}
-
-.homesection h1 {
-font-size: 20px;
-}
-
-.homesection p {
-font-size: 16px;
-}
-
-.container h1 {
-font-size: 28px;
-}
-
-h2 {
-font-size: 26px;
-}
-
-.profile-card,
-.activityBox,
-.forgotprofile-card {
-width: 100%;
-padding: 20px;
-}
-
-.quiz-card {
-width: 100%;
-}
-
-.activity-header {
-flex-direction: column;
-align-items: flex-start;
-gap: 5px;
-}
-
-.activity-row {
-flex-direction: column;
-gap: 5px;
-}
-
-.activity-row p {
-text-align: left;
-}
-
-.question {
-font-size: 16px;
-}
-
-.quizoption {
-font-size: 14px;
-}
-}
-
-
-@media screen and (max-width: 992px) {
-
-.conatiner {
-width: 90%;
-height: 520px;
-}
-
-.form-box {
-padding: 30px;
-}
-
-.conatiner h3 {
-font-size: 30px;
-}
-
-.toggle-panel h3 {
-font-size: 28px;
-}
-
-.toggle-panel p {
-font-size: 14px;
-text-align: center;
-}
-}
-
-@media screen and (max-width: 768px) {
-
-.outterform {
-padding: 20px;
-min-height: 100vh;
-}
-
-.conatiner {
-width: 100%;
-max-width: 500px;
-height: auto;
-min-height: 650px;
-border-radius: 20px;
-}
-
-
-.form-box {
-width: 100%;
-height: auto;
-position: relative;
-right: 0;
-padding: 35px 25px;
-justify-content: center;
-}
-
-.form-box.login {
-display: flex;
-}
-
-.form-box.regitser {
-display: none;
-visibility: visible;
-}
-
-.conatiner.active .form-box.login {
-display: none;
-}
-
-.conatiner.active .form-box.regitser {
-display: flex;
-}
-
-
-.toggle-box {
-position: relative;
-width: 100%;
-height: auto;
-}
-
-.toggle-box::before {
-display: none;
-}
-
-
-.toggle-panel {
-position: relative;
-width: 100%;
-height: auto;
-color: #333;
-background: #A4D9F3;
-padding: 25px 20px;
-text-align: center;
-}
-
-.toggle-panel.toggle-left {
-left: 0;
-top: 0;
-}
-
-.toggle-panel.toggle-right {
-right: 0;
-display: none;
-}
-
-.conatiner.active .toggle-panel.toggle-left {
-display: none;
-}
-
-.conatiner.active .toggle-panel.toggle-right {
-display: flex;
-}
-
-.toggle-panel h3 {
-font-size: 24px;
-}
-
-.toggle-panel p {
-font-size: 14px;
-margin-bottom: 15px;
-}
-
-
-.input-box {
-margin: 20px 0;
-}
-
-.input-box input {
-padding: 12px 45px 12px 15px;
-font-size: 14px;
-}
-
-.loginicons {
-right: 15px;
-font-size: 18px;
-}
-
-
-.btns {
-height: 45px;
-font-size: 15px;
-}
-
-.toggle-panel .btns {
-width: 140px;
-height: 42px;
-}
-
-.forgot-link a {
-font-size: 13px;
-}
-}
-
-
-@media screen and (max-width: 480px) {
-
-.outterform {
-padding: 10px;
-}
-
-.conatiner {
-width: 100%;
-min-height: 620px;
-border-radius: 15px;
-margin: 0;
-}
-
-.form-box {
-padding: 25px 18px;
-}
-
-.conatiner h3 {
-font-size: 24px;
-}
-
-.conatiner p {
-font-size: 12px;
-}
-
-.input-box {
-margin: 18px 0;
-}
-
-.input-box input {
-font-size: 13px;
-padding: 11px 40px 11px 12px;
-border-radius: 6px;
-}
-
-.loginicons {
-font-size: 16px;
-right: 12px;
-}
-
-.btns {
-height: 42px;
-font-size: 14px;
-border-radius: 6px;
-}
-
-.toggle-panel {
-padding: 20px 15px;
-}
-
-.toggle-panel h3 {
-font-size: 22px;
-}
-
-.toggle-panel p {
-font-size: 12px;
-}
-
-.toggle-panel .btns {
-width: 130px;
-height: 40px;
-font-size: 13px;
-}
-
-.forgot-link {
-margin-top: -5px;
-}
-
-.forgot-link a {
-font-size: 12px;
-}
-}
-

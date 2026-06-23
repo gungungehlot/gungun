@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 const scoremodel = require('../../modals/score');
 const { request } = require('express');
-var secretkey = '12345678'
+var secretkey = '123456'
 exports.savescore = async (request, response) => {
   const token = request.headers.authorization?.split(' ');
     console.log(token)

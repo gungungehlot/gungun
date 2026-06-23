@@ -149,7 +149,7 @@ export default function Addtopic() {
                             <h1>Quiz Topic </h1>
                         </div>
                         <hr />
-                        <form onSubmit={formhandler}>
+                        <form onSubmit={formhandler} autoComplete='off'>
                             <div className='faqinner'>
                                 {
                                     update

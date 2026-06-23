@@ -18,6 +18,8 @@ export default function Admindashboard() {
   const [Category ,SetCategory] = useState([])
   const [profile,setProfile] = useState('')
   const [admin , setadmin] = useState([])
+  const [user , setuser] = useState([])
+  const [quiz , setquiz] = useState([])
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,6 +41,7 @@ export default function Admindashboard() {
       })
     })
   },[])
+  // view profile Api
   useEffect(()=>{
      axios.put(`http://localhost:5000/api/admin/user/view-profile`,{},{headers:{Authorization:`Bearer ${Cookies.get('admin_token')}`}})
      .then((result) => {
@@ -64,6 +67,38 @@ export default function Admindashboard() {
       })
     })
   },[])
+  // user view api
+   useEffect(() => {
+    axios.post(`http://localhost:5000/api/website/user/view`)
+      .then((result) => {
+        if (result.data.status == true) {
+          setuser(result.data._data)
+        } else {
+          setuser([])
+        }
+      })
+      .catch(() => {
+        iziToast.error({
+          message: 'something went wrong'
+        })
+      })
+  }, [])
+  // Quiz view api
+   useEffect(() => {
+    axios.post(`http://localhost:5000/api/website/quiz/view`,)
+      .then((result) => {
+        if (result.data._status == true) {
+          setquiz(result.data._data)
+        } else {
+          setquiz([])
+        }
+      })
+      .catch(() => {
+        iziToast.error({
+          message: 'Something went wrong'
+        })
+      })
+  }, [])
   return (
     <>
     {/* {console.log('Rendering JSX')} */}
@@ -81,7 +116,7 @@ export default function Admindashboard() {
               <PiUsersBold/>
             </div>
             <div className='cardtext'>
-              10+
+              {user?.length}
             </div>
             </div>
             <div className='cardspantext'>
@@ -111,7 +146,7 @@ export default function Admindashboard() {
               <MdQuiz/>
             </div>
             <div className='cardtext'>
-              10+
+              {quiz?.length}
             </div>
             </div>
             <div className='cardspantext'>

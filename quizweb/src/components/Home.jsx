@@ -1,7 +1,6 @@
 import { BiWorld } from 'react-icons/bi'
 import Header from '../Common/Header'
 import Footer from '../Common/Footer'
-import { FaMinus, FaPlus } from 'react-icons/fa6'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import 'izitoast/dist/css/iziToast.min.css';
@@ -9,6 +8,7 @@ import axios from 'axios'
 import iziToast from 'izitoast'
 import '../assets/css/style.css'
 import { Link } from 'react-router-dom'
+import { FaMinus, FaPlus } from 'react-icons/fa'
 export default function Home() {
 
   const [Faq, Setfaq] = useState([])

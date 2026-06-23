@@ -10,7 +10,7 @@ export default function Addquiz() {
     const [errors, setErrors] = useState([])
     const [update, Setupdate] = useState('')
     const [selectimage, setselectimage] = useState('')
-    const [quizdetail, Setquizdetail] = useState([])
+    const [quizdetail, Setquizdetail] = useState({})
     const [quizquestion, Setquizquestion] = useState({})
     const [topic, Settopic] = useState([])
     const [topicdetail, setTopicDetail] = useState('')
@@ -24,6 +24,7 @@ export default function Addquiz() {
                 .then((result) => {
                     if (result.data._status == true) {
                         Setquizdetail(result.data._data)
+                        console.log(result.data._data, 'quiz details')
                         Setquizquestion(result.data._data.Quizobj)
                         setselectimage(result.data.image + '/' + result.data._data.image)
                         Setupdate(result.data._data._id)
@@ -59,7 +60,7 @@ export default function Addquiz() {
     const formhandler = (event) => {
         event.preventDefault();
         var data = event.target;
-        var field = data.querySelectorAll('input')
+        var field = data.querySelectorAll('input , select')
         var arrayerror = [];
 
         field.forEach((item) => {
@@ -178,7 +179,7 @@ export default function Addquiz() {
                         <h1>Quiz </h1>
                     </div>
                     <hr />
-                    <form onSubmit={formhandler}>
+                    <form onSubmit={formhandler} autoComplete='off'>
                         <div className='faqinner'>
                             {
                                 update
@@ -243,15 +244,23 @@ export default function Addquiz() {
                                     Select Quiz Topic
                                 </label>
                             </div>
-                            <select name='topicid' onChange={ErrorHandler} > Quiz Topic
-                                <option value=''>Quiz Topic</option>
-                                {
-                                    topic.map((value, index) => {
-                                        return (
-                                            <option value={value._id} selected = {quizdetail.topicid == value._id} key={index}>{value.name}</option>
-                                        )
-                                    })
-                                }
+                            <select
+                                name="topicid"
+                                value={quizdetail.topicid || ""}
+                                onChange={(e) => {
+                                    Setquizdetail({
+                                        ...quizdetail,
+                                        topicid: e.target.value
+                                    });
+                                }}
+                            >
+                                <option value="">Quiz Topic</option>
+
+                                {topic.map((value) => (
+                                    <option key={value._id} value={value._id}>
+                                        {value.name}
+                                    </option>
+                                ))}
                             </select>
                             {
                                 errors.includes("topicid") && (

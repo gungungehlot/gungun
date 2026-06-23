@@ -104,9 +104,9 @@ export default function Profile() {
     }
     var cookies=Cookies.get('user_token') 
      if(cookies == '' || cookies == undefined){
-            iziToast.error({
-                message : 'Please login first'
-            })
+             iziToast.info({
+              message: 'Ready to test your knowledge? Please log in first to start your quiz journey!.'
+            });
                 navigate('/login')
         }
   useEffect(()=>{

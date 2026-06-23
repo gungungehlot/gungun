@@ -1,5 +1,5 @@
 var jwt = require('jsonwebtoken')
-var secretkey = '12345678'
+var secretkey = '123456'
 const bcrypt = require('bcrypt');
 const adminmodel = require('../../modals/user');
 const nodemailer = require('nodemailer')
@@ -323,7 +323,7 @@ exports.forgotPassword = async (request, response) => {
         service: "gmail",
         auth: {
           user: "gehlotgungun1@gmail.com",
-          pass: 'pmwslzzwzampsmsc',
+          pass: 'wkdizkvhjzqmyogr',
         },
       });
       const resetToken = jwt.sign(
@@ -331,7 +331,7 @@ exports.forgotPassword = async (request, response) => {
         secretkey,
       );
 
-      const resetLink = `http://localhost:5173/Reset/${resetToken}`;
+      const resetLink = `http://localhost:5174/Reset/${resetToken}`;
 
       const info = transporter
         .sendMail({
@@ -356,7 +356,8 @@ exports.forgotPassword = async (request, response) => {
           };
           response.send(data);
         })
-        .catch(() => {
+        .catch((error) => {
+             console.log(error, 'forgot api error')
           const data = {
             _status: true,
             _message: "Something went wrong!",
@@ -365,7 +366,6 @@ exports.forgotPassword = async (request, response) => {
           response.send(data);
         });
     } catch (error) {
-        console.log(error)
       const data = {
         _status: false,
         _message: "Something went wrong",

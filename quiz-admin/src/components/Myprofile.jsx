@@ -22,7 +22,7 @@ export default function Myprofile() {
     const [gender, setGender] = useState('')
     const [activity, setActivity] = useState([])
     const [seletedrecords, Setselectedrecords] = useState([])
-     const [showPassword , setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const selectgender = (chngGender) => {
@@ -154,14 +154,14 @@ export default function Myprofile() {
         }
     }
 
-    const Logoutadmin =()=>{
+    const Logoutadmin = () => {
         dispatch(logout())
-        var cookies=Cookies.get('admin_token') 
-        if(cookies == '' || cookies == undefined){
+        var cookies = Cookies.get('admin_token')
+        if (cookies == '' || cookies == undefined) {
             iziToast.success({
-                message : 'Sucess'
+                message: 'Sucess'
             })
-                navigate('/')
+            navigate('/')
         }
     }
 
@@ -210,7 +210,7 @@ export default function Myprofile() {
                     <div class="nav-right">
                         <a href="#">Dashboard</a>
                         <a href="#" class="active">Profile</a>
-                        <button className='logout' onClick={Logoutadmin}>Logout</button>        
+                        <button className='logout' onClick={Logoutadmin}>Logout</button>
                     </div>
                 </nav>
                 <div className='mainprofile'>
@@ -260,7 +260,7 @@ export default function Myprofile() {
                                     type="text"
                                     name='name'
                                     placeholder='Enter Admin Name '
-                                    defaultValue={profile.name}
+                                    defaultValue={profile?.name}
                                     onKeyUp={ErrorHandler}
                                 />
                             </div>
@@ -271,7 +271,7 @@ export default function Myprofile() {
                                     type='email'
                                     name='email'
                                     placeholder='Enter Admin Email '
-                                    defaultValue={profile.email}
+                                    defaultValue={profile?.email}
                                     onKeyUp={ErrorHandler}
                                 />
                             </div>
@@ -283,7 +283,7 @@ export default function Myprofile() {
                                     maxLength={10}
                                     name='mobile_number'
                                     placeholder='Enter Admin mobile_number '
-                                    defaultValue={profile.mobile_number}
+                                    defaultValue={profile?.mobile_number}
                                     onKeyUp={ErrorHandler}
                                 />
                             </div>
@@ -294,7 +294,7 @@ export default function Myprofile() {
                                     type="text"
                                     name='address'
                                     placeholder='Enter Admin Address '
-                                    defaultValue={profile.address}
+                                    defaultValue={profile?.address}
                                     onKeyUp={ErrorHandler}
                                 />
                             </div>
@@ -386,12 +386,12 @@ export default function Myprofile() {
 
                             <div class="form-group">
                                 <label>Conform Password</label>
-                                <input type= 'password'
+                                <input type='password'
                                     placeholder="Conform_password"
                                     name='Confrom_password'
                                     onKeyUp={ErrorHandler}
                                 />
-                                
+
 
                                 {
                                     errors.includes("Confrom_password") && (
@@ -411,7 +411,7 @@ export default function Myprofile() {
                             <button className="clear-btn" onClick={Deleteactivity}>Clear All <RiDeleteBin3Fill /></button>
                         </div>
                         {
-                            activity.map((value, index) => (
+                            activity?.map((value, index) => (
                                 <div key={index} className="activityItem">
                                     <div className='selectbox'>
                                         <div>
