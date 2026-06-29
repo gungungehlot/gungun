@@ -205,15 +205,15 @@ select:focus {
 
 .faqinner button {
     margin-top: 10px;
-    font-size: 5px;
+    font-size: 20px;
     letter-spacing: 1px;
     font-weight: 600;
-    color: white;
-    padding: 5px;
+    background: linear-gradient(120deg, white, #A4D9F3);
+    color: black;
+    padding: 10px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    color: black;
     transition: 0.3s;
 }
 
@@ -1116,7 +1116,7 @@ Link {
     opacity: 0.6;
 }
 
-.scoremain{
+.scoremain {
     padding-top: 60px;
     width: 100%;
     margin: 30px 20px;
@@ -1209,7 +1209,7 @@ Link {
 
 
 
-.logoutuser:hover{
+.logoutuser:hover {
     background: #15803d;
-    color:white;
+    color: white;
 }

@@ -111,20 +111,20 @@
 }
 
 /* Ensure main area clears fixed header */
-.usermain {
+/* .usermain {
 	display: flex;
 	align-items: flex-start;
 	gap: 20px;
-	padding-top: 80px; /* leaves space for fixed header */
-}
+	padding-top: 70px;
+} */
 
 /* Sidebar improvements */
-.sidebarouter {
+/* .sidebarouter {
 	height: auto !important;
 	max-height: calc(100vh - 88px);
 	overflow-y: auto;
 	box-sizing: border-box;
-}
+} */
 
 /* Make lists and dashboard buttons wrap nicely */
 .lists { flex-wrap: wrap; }
